@@ -72,39 +72,6 @@ DeepFace is used to analyze the face and classify the dominant emotion based on 
 
 The webcam feed is captured using OpenCV, and DeepFace processes each frame to detect emotions.
 
-### Example Code:
-
-```python
-import cv2
-from deepface import DeepFace
-
-# Start video capture
-cap = cv2.VideoCapture(0)
-
-while True:
-    ret, frame = cap.read()
-    if not ret:
-        break
-    
-    # Analyze the frame for emotion
-    result = DeepFace.analyze(frame, actions=['emotion'])
-    
-    # Get the dominant emotion
-    dominant_emotion = result[0]['dominant_emotion']
-    
-    # Display the emotion on the frame
-    cv2.putText(frame, dominant_emotion, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
-    
-    # Show the frame with emotion displayed
-    cv2.imshow('Emotion Recognition', frame)
-    
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-
-cap.release()
-cv2.destroyAllWindows()
-```
-
 ## Contributing
 
 Contributions are welcome! If you have suggestions for improvements or encounter issues, feel free to open an issue or submit a pull request.
